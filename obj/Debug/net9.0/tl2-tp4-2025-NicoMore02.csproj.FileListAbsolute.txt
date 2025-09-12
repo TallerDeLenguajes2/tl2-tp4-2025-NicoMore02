@@ -35,3 +35,4 @@ C:\Users\nicom\OneDrive\Escritorio\facultad\Taller de Lenguaje 2\Practica\tp4\tl
 C:\Users\nicom\OneDrive\Escritorio\facultad\Taller de Lenguaje 2\Practica\tp4\tl2-tp4-2025-NicoMore02\obj\Debug\net9.0\tl2-tp4-2025-NicoMore02.pdb
 C:\Users\nicom\OneDrive\Escritorio\facultad\Taller de Lenguaje 2\Practica\tp4\tl2-tp4-2025-NicoMore02\obj\Debug\net9.0\tl2-tp4-2025-NicoMore02.genruntimeconfig.cache
 C:\Users\nicom\OneDrive\Escritorio\facultad\Taller de Lenguaje 2\Practica\tp4\tl2-tp4-2025-NicoMore02\obj\Debug\net9.0\ref\tl2-tp4-2025-NicoMore02.dll
+C:\Users\nicom\OneDrive\Escritorio\facultad\Taller de Lenguaje 2\Practica\tp4\tl2-tp4-2025-NicoMore02\obj\Debug\net9.0\tl2-tp4-2025-NicoMore02.sourcelink.json

@@ -4,5 +4,17 @@
         <name>tl2-tp4-2025-NicoMore02</name>
     </assembly>
     <members>
+        <member name="M:tl2_tp4_2025_NicoMore02.Controllers.CadeteriaController.GetPedidos">
+            <summary>
+            Se obtiene la lista de los pedidos
+            </summary>
+            <returns>Devuelve la lista de pedidos</returns>
+        </member>
+        <member name="M:tl2_tp4_2025_NicoMore02.Controllers.CadeteriaController.GetCadetes">
+            <summary>
+            Se obtiene la lista de todos los cadetes disponibles
+            </summary>
+            <returns>lista de cadetes</returns>
+        </member>
     </members>
 </doc>
