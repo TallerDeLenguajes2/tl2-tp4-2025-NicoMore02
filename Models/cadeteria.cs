@@ -26,29 +26,33 @@
         public bool CrearPedido(string comida, string obs, Cliente cliente)
         {
             Pedido NuevoPeido = new Pedido(comida, obs, cliente);
-            Pedidos.Add(NuevoPeido);
+            pedidos.Add(NuevoPeido);
             return true;
         }
 
-        public bool AsignarCadeteAPedido(int idCadete, int NroPedido)
+    public void anadirpedido(Pedido pedido)
+    {
+        pedidos.Add(pedido);
+    }
+    public bool AsignarCadeteAPedido(int idCadete, int NroPedido)
+    {
+        foreach (var pedidos in Pedidos)
         {
-            foreach (var pedidos in Pedidos)
+            if (pedidos.Nro1 == NroPedido)
             {
-                if (pedidos.Nro1 == NroPedido)
+                foreach (var cadetes in Cadetes)
                 {
-                    foreach (var cadetes in Cadetes)
+                    if (cadetes.Id == idCadete)
                     {
-                        if (cadetes.Id == idCadete)
-                        {
-                            pedidos.Estado = Estados.EnCamino;
-                            pedidos.CadeteAsignado(cadetes);
-                            return true;
-                        }
+                        pedidos.Estado = Estados.EnCamino;
+                        pedidos.CadeteAsignado(cadetes);
+                        return true;
                     }
                 }
             }
-            return false;
         }
+        return false;
+    }
 
         public Cadete BuscarCadete(int id)
         {
@@ -62,7 +66,7 @@
             return null;
         }
 
-        public string ReasignarPedido(int idCadeteOrigen, int nroPedido, int idCadeteDestino)
+        public bool ReasignarPedido(int idCadeteOrigen, int nroPedido, int idCadeteDestino)
         {
             Cadete cadeteOrigen = null;
             Cadete cadeteDestino = null;
@@ -92,12 +96,12 @@
             if (cadeteOrigen == null)
             {
 
-                return "Cadete origen no encontrado.";
+                return false;
             }
             if (cadeteDestino == null)
             {
 
-                return "Cadete destino no encontrado.";
+                return false;
             }
 
 
@@ -111,14 +115,14 @@
 
             if (pedidoEncontrado == null)
             {
-                return "El pedido no existe en el cadete origen.";
+                return false;
             }
 
 
             EliminarPedido(nroPedido);
             Pedidos.Add(pedidoEncontrado);
 
-            return "Pedido reasignado correctamente.";
+            return true;
         }
 
 

@@ -16,5 +16,26 @@
             </summary>
             <returns>lista de cadetes</returns>
         </member>
+        <member name="M:tl2_tp4_2025_NicoMore02.Controllers.CadeteriaController.GetInforme">
+            <summary>
+            Genera un informe 
+            </summary>
+            <returns>un informe</returns>
+        </member>
+        <member name="M:tl2_tp4_2025_NicoMore02.Controllers.CadeteriaController.AgregarPedido(Pedido)">
+            <summary>
+            Creacion del pedido del cliente
+            </summary>
+            <param name="pedido"></param>
+            <returns>el pedido</returns>
+        </member>
+        <member name="M:tl2_tp4_2025_NicoMore02.Controllers.CadeteriaController.AsignarPedido(System.Int32,System.Int32)">
+            <summary>
+            Se asigna el pedido a un cadete
+            </summary>
+            <param name="idCadete"></param>
+            <param name="NroPedido"></param>
+            <returns>el estado de la asignacion</returns>
+        </member>
     </members>
 </doc>

@@ -13,6 +13,7 @@ public class Pedido
     public Cadete Cadete { get => cadete; }
     public string Comida { get => comida; }
     public Cliente Cliente { get => cliente; }
+    public string Obs { get => obs; }
 
     public Pedido(string comida, string Obs, Cliente cliente)
     {

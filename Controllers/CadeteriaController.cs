@@ -14,10 +14,14 @@ public class CadeteriaController : ControllerBase
     {
         cadeteria.AnadirCadete(1, "Carlos", "Calle Falsa 123", 11223344);
         cadeteria.AnadirCadete(2, "Lucía", "Av. Libertad 456", 11998877);
+        cadeteria.AnadirCadete(3, "Lucía", "Av. Libertad 56", 119988772);
         Cliente cliente1 = new Cliente("Fabricio", "Barrio Policial", 3818920471, "Porton negro");
         Cliente cliente2 = new Cliente("María", "Centro", 3812345678, "Casa esquina");
+        Cliente cliente3 = new Cliente("Oscar", "Centro", 38125345678, "Casa esquina");
         cadeteria.CrearPedido("Milanesa", "De Carne", cliente1);
         cadeteria.CrearPedido("Pizza", "Napolitana", cliente2);
+        cadeteria.AsignarCadeteAPedido(1, 1);
+        cadeteria.AsignarCadeteAPedido(2, 2);
     }
 
     /// <summary>
@@ -43,4 +47,76 @@ public class CadeteriaController : ControllerBase
         return Ok(cadeteria.Cadetes1);
     }
 
+    /// <summary>
+    /// Genera un informe 
+    /// </summary>
+    /// <returns>un informe</returns>
+    [HttpGet("informe")]
+    public IActionResult GetInforme()
+    {
+        var informe = new
+        {
+            TotalPedidos = cadeteria.PedidosTotal(),
+            TotalCadetes = cadeteria.TotalDeCadetes(),
+            TotalRecaudado = cadeteria.TotalRecaudado()
+        };
+
+        return Ok(informe);
+    }
+
+
+    /// <summary>
+    /// Creacion del pedido del cliente
+    /// </summary>
+    /// <param name="pedido"></param>
+    /// <returns>el pedido</returns>
+    [HttpPost("Agregar Pedido")]
+    public IActionResult AgregarPedido([FromBody] Pedido pedido)
+    {
+        Cliente cliente = new Cliente(pedido.Cliente.Nombre, pedido.Cliente.Direccion, pedido.Cliente.Telefono, pedido.Cliente.Datosreferenciadireccion);
+
+        var result = cadeteria.CrearPedido(pedido.Comida, pedido.Obs, cliente);
+
+        return Created();
+    }
+
+
+    /// <summary>
+    /// Se asigna el pedido a un cadete
+    /// </summary>
+    /// <param name="idCadete"></param>
+    /// <param name="NroPedido"></param>
+    /// <returns>el estado de la asignacion</returns>
+    [HttpPut("AsignarPedidos/{NroPedido}/{idCadete}")]
+    public IActionResult AsignarPedido(int idCadete, int NroPedido)
+    {
+        bool asignado = cadeteria.AsignarCadeteAPedido(idCadete, NroPedido);
+        if (asignado == false)
+        {
+            NotFound("Error al asignar");
+        }
+
+        return Ok("Pedido Asignado Correctamente");
+    }
+
+    [HttpPut("Cambiar Estado del pedido")]
+    public IActionResult CambiarEstadoPedido(int Nro, int opcion)
+    {
+        bool estado = cadeteria.CambiarEstado(Nro, opcion);
+        if (estado == true)
+        {
+            return Ok("Exito");
+        }
+        else
+        {
+            return NotFound();
+        }
+    }
+
+    [HttpPut("CambiarCadetePedido")]
+    public IActionResult CambiarCadetePedido(int idCadeteOrigen, int nroPedido, int idCadeteDestino)
+    {
+        bool result = cadeteria.ReasignarPedido(idCadeteOrigen, nroPedido, idCadeteDestino);
+        return Ok();
+    }
 }
