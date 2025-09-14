@@ -1,0 +1,14 @@
+[
+  {
+    "Id": 1,
+    "Nombre": "Juan Perez",
+    "Direccion": "Calle 123",
+    "Telefono": 1122334455
+  },
+  {
+    "Id": 2,
+    "Nombre": "Maria Gomez",
+    "Direccion": "Avenida 456",
+    "Telefono": 1166778899
+  }
+]
