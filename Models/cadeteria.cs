@@ -1,5 +1,6 @@
     public class Cadeteria
     {
+        private int contadorPedidos = 0;
         private string nombre;
         private long telefono;
         private List<Cadete> Cadetes;
@@ -23,11 +24,11 @@
             return true;
         }
 
-        public bool CrearPedido(string comida, string obs, Cliente cliente)
+        public Pedido CrearPedido(string comida, string obs, Cliente cliente)
         {
-            Pedido NuevoPeido = new Pedido(comida, obs, cliente);
-            pedidos.Add(NuevoPeido);
-            return true;
+            Pedido NuevoPedido = new Pedido(comida, obs, cliente);
+            pedidos.Add(NuevoPedido);
+            return NuevoPedido;
         }
 
     public void anadirpedido(Pedido pedido)
