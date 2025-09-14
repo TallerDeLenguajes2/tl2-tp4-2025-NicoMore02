@@ -7,25 +7,20 @@ namespace tl2_tp4_2025_NicoMore02.Controllers;
 [Route("api/[controller]")]
 public class CadeteriaController : ControllerBase
 {
-    private static Cadeteria cadeteria = new Cadeteria("Sangunesa", 381238792124);
-
+    private Cadeteria cadeteria;
+    private AccesoADatosCadeteria ADCadeteria;
+    private AccesoADatosCadetes ADCadetes;
+    private AccesoADatosPedidos ADPedidos;
 
     public CadeteriaController()
     {
-        if (!cadeteria.Cadetes1.Any())
-        {
+        ADCadeteria = new AccesoADatosCadeteria();
+        ADCadetes = new AccesoADatosCadetes();
+        ADPedidos = new AccesoADatosPedidos();
 
-            cadeteria.AnadirCadete(1, "Carlos", "Calle Falsa 123", 11223344);
-            cadeteria.AnadirCadete(2, "Lucía", "Av. Libertad 456", 11998877);
-            cadeteria.AnadirCadete(3, "Lucía", "Av. Libertad 56", 119988772);
-            Cliente cliente1 = new Cliente("Fabricio", "Barrio Policial", 3818920471, "Porton negro");
-            Cliente cliente2 = new Cliente("María", "Centro", 3812345678, "Casa esquina");
-            Cliente cliente3 = new Cliente("Oscar", "Centro", 38125345678, "Casa esquina");
-            cadeteria.CrearPedido("Milanesa", "De Carne", cliente1);
-            cadeteria.CrearPedido("Pizza", "Napolitana", cliente2);
-            cadeteria.AsignarCadeteAPedido(1, 1);
-            cadeteria.AsignarCadeteAPedido(2, 2);
-        }
+        cadeteria = ADCadeteria.Obtener();
+        cadeteria.AnadirCadete(ADCadetes.Obtener());
+        cadeteria.anadirpedido(ADPedidos.Obtener());
     }
 
     /// <summary>
@@ -82,6 +77,7 @@ public class CadeteriaController : ControllerBase
         Cliente cliente = new Cliente(pedido.Cliente.Nombre, pedido.Cliente.Direccion, pedido.Cliente.Telefono, pedido.Cliente.Datosreferenciadireccion);
 
         var result = cadeteria.CrearPedido(pedido.Comida, pedido.Obs, cliente);
+        AccesoADatosPedidos.Guardar(result);
 
         return CreatedAtAction(nameof(GetPedidos), new { }, result);
     }
@@ -96,12 +92,12 @@ public class CadeteriaController : ControllerBase
     [HttpPut("AsignarPedidos/{idCadete}/{NroPedido}")]
     public IActionResult AsignarPedido(int idCadete, int NroPedido)
     {
-        bool asignado = cadeteria.AsignarCadeteAPedido(idCadete, NroPedido);
-        if (asignado == false)
+        Pedido asignado = cadeteria.AsignarCadeteAPedido(idCadete, NroPedido);
+        if (!asignado)
         {
             NotFound("Error al asignar");
         }
-
+        AccesoADatosPedidos.Guardar(asignado);
         return Ok("Pedido Asignado Correctamente");
     }
 
@@ -114,25 +110,28 @@ public class CadeteriaController : ControllerBase
     [HttpPut("CambiarEstadodelpedido/{Nro}/{opcion}")]
     public IActionResult CambiarEstadoPedido(int Nro, int opcion)
     {
-        bool estado = cadeteria.CambiarEstado(Nro, opcion);
-        if (estado == true)
+        Pedido estado = cadeteria.CambiarEstado(Nro, opcion);
+
+        if (estado)
         {
-            return Ok("Exito");
+            return Ok("Exito al cambiar el estado del pedido");
+            AccesoADatosPedidos.Guardar(estado);
         }
         else
         {
-            return NotFound();
+            return NotFound("Error al cambiar el estado del pedido");
         }
     }
 
     [HttpPut("CambiarCadetePedido/{idCadeteDestino}/{idCadeteOrigen}/{nroPedido}")]
     public IActionResult CambiarCadetePedido(int idCadeteOrigen, int nroPedido, int idCadeteDestino)
     {
-        bool result = cadeteria.ReasignarPedido(idCadeteOrigen, nroPedido, idCadeteDestino);
-        if (result == false)
+        Pedido result = cadeteria.ReasignarPedido(idCadeteOrigen, nroPedido, idCadeteDestino);
+        if (!result)
         {
             return NotFound("Error al cambiar el cadete");
         }
+        AccesoADatosPedidos.Guardar(result);
         return Ok("Exito al cambiar el cadete");
     }
 }

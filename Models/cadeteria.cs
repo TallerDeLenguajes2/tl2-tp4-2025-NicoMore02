@@ -35,7 +35,7 @@
     {
         pedidos.Add(pedido);
     }
-    public bool AsignarCadeteAPedido(int idCadete, int NroPedido)
+    public Pedido AsignarCadeteAPedido(int idCadete, int NroPedido)
     {
         foreach (var pedidos in Pedidos)
         {
@@ -47,12 +47,12 @@
                     {
                         pedidos.Estado = Estados.EnCamino;
                         pedidos.CadeteAsignado(cadetes);
-                        return true;
+                        return pedidos;
                     }
                 }
             }
         }
-        return false;
+        return null;
     }
 
         public Cadete BuscarCadete(int id)
@@ -67,7 +67,7 @@
             return null;
         }
 
-        public bool ReasignarPedido(int idCadeteOrigen, int nroPedido, int idCadeteDestino)
+        public Pedido ReasignarPedido(int idCadeteOrigen, int nroPedido, int idCadeteDestino)
         {
             Cadete cadeteOrigen = null;
             Cadete cadeteDestino = null;
@@ -97,14 +97,13 @@
             if (cadeteOrigen == null)
             {
 
-                return false;
+                return null;
             }
             if (cadeteDestino == null)
             {
 
-                return false;
+                return null;
             }
-
 
             foreach (var pedido in Pedidos)
             {
@@ -116,14 +115,14 @@
 
             if (pedidoEncontrado == null)
             {
-                return false;
+                return null;
             }
 
 
             EliminarPedido(nroPedido);
             Pedidos.Add(pedidoEncontrado);
 
-            return true;
+            return pedidoEncontrado;
         }
 
 
@@ -199,7 +198,7 @@
             return false;
         }
 
-        public bool CambiarEstado(int Nro, int numero)
+        public Pedido CambiarEstado(int Nro, int numero)
         {
             switch (numero)
             {
@@ -209,7 +208,7 @@
                         if (pedido.Nro1 == Nro)
                         {
                             pedido.Estado = Estados.EnCamino;
-                            return true;
+                            return pedido;
                         }
                     }
                     break;
@@ -219,7 +218,7 @@
                         if (pedido.Nro1 == Nro)
                         {
                             pedido.Estado = Estados.Entregado;
-                            return true;
+                            return pedido;
                         }
                     }
                     break;
@@ -229,12 +228,12 @@
                         if (pedido.Nro1 == Nro)
                         {
                             pedido.Estado = Estados.Cancelado;
-                            return true;
+                            return pedido;
                         }
                     }
                     break;
             }
-            return false;
+            return null;
         }
 
     }
