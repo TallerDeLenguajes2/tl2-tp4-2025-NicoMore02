@@ -1,14 +1,16 @@
+using System.Text.Json;
+
 public class AccesoADatosCadetes
 {
-    private string ruta = "Cadetes.json";
-    public List<Cadetes> Obtener()
+    private string ruta = Path.Combine("json", "Cadetes.json");
+    public List<Cadete> Obtener()
     {
         if (!File.Exists(ruta))
         {
-            return new List<Cadetes>();
+            return new List<Cadete>();
         }
-        var json = File.ReadAllText(ruta);
-        var datos = JsonSerializer.Deserialize<List<Cadete>>(json);
-        return datos;
+        string json = File.ReadAllText(ruta);
+        return JsonSerializer.Deserialize<List<Cadete>>(json) ?? new List<Cadete>();
+        //return datos;
     }
 }

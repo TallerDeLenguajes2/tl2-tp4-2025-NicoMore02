@@ -37,5 +37,13 @@
             <param name="NroPedido"></param>
             <returns>el estado de la asignacion</returns>
         </member>
+        <member name="M:tl2_tp4_2025_NicoMore02.Controllers.CadeteriaController.CambiarEstadoPedido(System.Int32,System.Int32)">
+            <summary>
+            Cambia el estado que se encuentra el pedido 
+            </summary>
+            <param name="Nro"></param>
+            <param name="opcion"></param>
+            <returns>si se realizo el cambio con exito o no</returns>
+        </member>
     </members>
 </doc>

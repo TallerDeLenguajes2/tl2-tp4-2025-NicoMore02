@@ -1,0 +1,132 @@
+[
+  {
+    "nro": 1,
+    "comida": "Pizza Margarita",
+    "obs": "Sin cebolla",
+    "cliente": {
+      "nombre": "Juan Pérez",
+      "direccion": "Av. Siempre Viva 742",
+      "telefono": "1155667788",
+      "datosreferenciadireccion": "Casa blanca portón negro"
+    },
+    "estado": 0,
+    "cadete": null
+  },
+  {
+    "nro": 2,
+    "comida": "Hamburguesa Completa",
+    "obs": "Extra queso",
+    "cliente": {
+      "nombre": "María García",
+      "direccion": "Calle Falsa 123",
+      "telefono": "1199887766",
+      "datosreferenciadireccion": "Departamento 4B"
+    },
+    "estado": 1,
+    "cadete": null
+  },
+  {
+    "nro": 3,
+    "comida": "Sushi Mixto",
+    "obs": "Extra salsa de soja",
+    "cliente": {
+      "nombre": "Roberto Silva",
+      "direccion": "Pueyrredón 567",
+      "telefono": "1166554433",
+      "datosreferenciadireccion": "Timbre con nombre 'Silva'"
+    },
+    "estado": 2,
+    "cadete": null
+  },
+  {
+    "nro": 4,
+    "comida": "Ensalada César",
+    "obs": "Sin croutones",
+    "cliente": {
+      "nombre": "Laura Fernández",
+      "direccion": "Santa Fe 2100",
+      "telefono": "1144332211",
+      "datosreferenciadireccion": "Edificio verde"
+    },
+    "estado": 0,
+    "cadete": null
+  },
+  {
+    "nro": 5,
+    "comida": "Lasaña de Carne",
+    "obs": "Bien cocida",
+    "cliente": {
+      "nombre": "Diego Rodríguez",
+      "direccion": "Cabildo 1890",
+      "telefono": "1122334455",
+      "datosreferenciadireccion": "Local de abajo"
+    },
+    "estado": 1,
+    "cadete": null
+  },
+  {
+    "nro": 6,
+    "comida": "Pollo al Curry",
+    "obs": "Picante medio",
+    "cliente": {
+      "nombre": "Sofía López",
+      "direccion": "Av. Belgrano 876",
+      "telefono": "1177665544",
+      "datosreferenciadireccion": "Puerta de madera"
+    },
+    "estado": 0,
+    "cadete": null
+  },
+  {
+    "nro": 7,
+    "comida": "Milanesa Napolitana",
+    "obs": "Con papas fritas",
+    "cliente": {
+      "nombre": "Miguel Ángel",
+      "direccion": "Av. San Martín 654",
+      "telefono": "1133445566",
+      "datosreferenciadireccion": "Casa con rejas"
+    },
+    "estado": 2,
+    "cadete": null
+  },
+  {
+    "nro": 8,
+    "comida": "Empanadas de Carne",
+    "obs": "Docena mixta",
+    "cliente": {
+      "nombre": "Elena Torres",
+      "direccion": "Av. Corrientes 3210",
+      "telefono": "1199554433",
+      "datosreferenciadireccion": "Oficina 305"
+    },
+    "estado": 1,
+    "cadete": null
+  },
+  {
+    "nro": 9,
+    "comida": "Ravioles de Ricota",
+    "obs": "Salsa fileto",
+    "cliente": {
+      "nombre": "Pablo Castro",
+      "direccion": "Av. Juan B. Justo 987",
+      "telefono": "1188776655",
+      "datosreferenciadireccion": "Frente a la plaza"
+    },
+    "estado": 0,
+    "cadete": null
+  },
+  {
+    "nro": 10,
+    "comida": "Asado para Dos",
+    "obs": "Bien jugoso",
+    "cliente": {
+      "nombre": "Valentina Ruiz",
+      "direccion": "Av. Rivadavia 2345",
+      "telefono": "1166998855",
+      "datosreferenciadireccion": "Departamento 2do piso"
+    },
+    "estado": 1,
+    "cadete": null
+  }
+]
